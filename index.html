@@ -1,435 +1,234 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Abhay Kumar Prusty</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background: #f7f4ef;
-            color: #2c2c2c;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            line-height: 1.75;
-        }
-
-        a { color: #2c6fad; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        .page {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Nav */
-        nav {
-            padding: 1.6rem 0 1.4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e0dbd2;
-        }
-
-        nav .name {
-            font-family: 'Lora', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.6rem;
-        }
-
-        nav ul a {
-            font-size: 0.82rem;
-            color: #666;
-            letter-spacing: 0.02em;
-        }
-
-        nav ul a:hover { color: #2c6fad; text-decoration: none; }
-
-        /* Hero */
-        .hero {
-            padding: 4rem 0 3rem;
-            border-bottom: 1px solid #e0dbd2;
-        }
-
-        .hero h1 {
-            font-family: 'Lora', serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 400;
-            color: #1a1a1a;
-            line-height: 1.2;
-            margin-bottom: 0.6rem;
-        }
-
-        .hero .subtitle {
-            font-size: 0.88rem;
-            color: #999;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            color: #444;
-            max-width: 540px;
-            margin-bottom: 1.8rem;
-        }
-
-        .hero-links {
-            display: flex;
-            gap: 0.7rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            font-size: 0.8rem;
-            padding: 0.42rem 1rem;
-            border-radius: 4px;
-            font-weight: 400;
-            transition: all 0.15s;
-        }
-
-        .btn-solid {
-            background: #2c6fad;
-            color: #fff;
-            border: 1px solid #2c6fad;
-        }
-
-        .btn-solid:hover { background: #245d94; text-decoration: none; color: #fff; }
-
-        .btn-outline {
-            background: transparent;
-            color: #2c6fad;
-            border: 1px solid #b0c8e0;
-        }
-
-        .btn-outline:hover { background: #eef4fa; text-decoration: none; }
-
-        /* Sections */
-        section {
-            padding: 3rem 0;
-            border-bottom: 1px solid #e0dbd2;
-        }
-
-        h2 {
-            font-family: 'Lora', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 1.6rem;
-        }
-
-        /* About */
-        .about p {
-            color: #444;
-            font-size: 0.97rem;
-            margin-bottom: 1rem;
-        }
-
-        .about p:last-child { margin-bottom: 0; }
-
-        /* Research */
-        .research-item {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 0 1.4rem;
-            margin-bottom: 2rem;
-        }
-
-        .research-item:last-child { margin-bottom: 0; }
-
-        .r-date {
-            font-size: 0.75rem;
-            color: #aaa;
-            padding-top: 0.2rem;
-            line-height: 1.5;
-        }
-
-        .r-body h3 {
-            font-size: 0.97rem;
-            font-weight: 500;
-            color: #1a1a1a;
-            margin-bottom: 0.15rem;
-        }
-
-        .r-body .r-where {
-            font-size: 0.82rem;
-            color: #999;
-            margin-bottom: 0.5rem;
-        }
-
-        .r-body p {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-
-        .r-body a { font-size: 0.82rem; }
-
-        /* Publication */
-        .pub {
-            padding: 1.2rem 1.4rem;
-            background: #fff;
-            border: 1px solid #e0dbd2;
-            border-radius: 6px;
-        }
-
-        .pub h3 {
-            font-size: 0.97rem;
-            font-weight: 500;
-            color: #1a1a1a;
-            margin-bottom: 0.3rem;
-        }
-
-        .pub .pub-meta {
-            font-size: 0.82rem;
-            color: #999;
-            margin-bottom: 0.7rem;
-        }
-
-        .pub-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-
-        .pub-links a {
-            font-size: 0.78rem;
-            padding: 0.22rem 0.65rem;
-            border: 1px solid #b0c8e0;
-            border-radius: 3px;
-            color: #2c6fad;
-        }
-
-        .pub-links a:hover { background: #eef4fa; text-decoration: none; }
-
-        /* Skills */
-        .skills-row {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 0.5rem 1.4rem;
-            align-items: baseline;
-            margin-bottom: 0.6rem;
-            font-size: 0.9rem;
-        }
-
-        .skills-row .s-label { color: #aaa; font-size: 0.78rem; }
-        .skills-row .s-val   { color: #444; }
-
-        /* Misc list */
-        .misc-list { list-style: none; }
-
-        .misc-list li {
-            font-size: 0.9rem;
-            color: #555;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #ece8e0;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .misc-list li:last-child { border-bottom: none; }
-
-        .misc-list .m-year {
-            font-size: 0.78rem;
-            color: #bbb;
-            min-width: 38px;
-            padding-top: 0.07rem;
-        }
-
-        /* Contact */
-        .contact-links { display: flex; flex-direction: column; gap: 0.6rem; }
-
-        .contact-links a {
-            font-size: 0.9rem;
-            color: #444;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .contact-links .c-label {
-            font-size: 0.78rem;
-            color: #bbb;
-            min-width: 68px;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem 0;
-            font-size: 0.78rem;
-            color: #bbb;
-            text-align: center;
-        }
-
-        @media (max-width: 520px) {
-            nav ul { gap: 1rem; }
-            .research-item { grid-template-columns: 1fr; }
-            .r-date { margin-bottom: 0.2rem; }
-            .skills-row { grid-template-columns: 1fr; gap: 0.05rem; }
-            .s-label { display: inline; }
-            .s-label::after { content: ': '; }
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
-<body>
-<div class="page">
+<body class="is-preload">
 
-    <nav>
-        <span class="name">Abhay Kumar Prusty</span>
-        <ul>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#publications">Papers</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="Abhay_Kumar_Prusty_CV.pdf" target="_blank">CV</a></li>
-        </ul>
-    </nav>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-    <div class="hero">
-        <h1>Abhay Kumar Prusty</h1>
-        <p class="subtitle">4th Year BS-MS Physics · IISER Kolkata &nbsp;|&nbsp; Research Intern, TIFR Mumbai</p>
-        <p>
-            I study the Universe from the inside out — from the spiral arms of our galaxy
-            to the 21-cm signal of the cosmic Dark Ages. Interested in galactic archaeology,
-            radio cosmology, and stellar astrophysics.
-        </p>
-        <div class="hero-links">
-            <a class="btn btn-solid" href="Abhay_Kumar_Prusty_CV.pdf" target="_blank">Download CV</a>
-            <a class="btn btn-outline" href="https://github.com/Abhaypru" target="_blank">GitHub</a>
-            <a class="btn btn-outline" href="https://www.arxiv.org/abs/2506.11383" target="_blank">arXiv</a>
-            <a class="btn btn-outline" href="mailto:akp22ms087@iiserkol.ac.in">Email</a>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-star"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Abhay Kumar Prusty</h1>
+                    <p>4th Year Undergraduate, IISER Kolkata | <br />
+                    Research Intern, Tata Institute of Fundamental Research (TIFR) | <br />
+                    Astrophysics &amp; Cosmology </p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#work">Research</a></li>
+                    <li><a href="#publications">Papers</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#CV">CV</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Intro -->
+            <article id="intro">
+                <h2 class="major">About Me</h2>
+                <span class="image main"><img src="images/aboutpic.jpg" alt="Abhay Kumar Prusty" /></span>
+                <p>Hello! I'm <strong>Abhay Kumar Prusty</strong>, a fourth-year undergraduate student at the Indian Institute of Science Education and Research (IISER) Kolkata, pursuing a BS-MS dual degree in Physics with a minor in Computer Science. My academic journey is shaped by a deep fascination with the cosmos and a strong inclination toward hands-on, data-driven research in astrophysics and cosmology.</p>
+
+                <p>My current project, supervised by Mr. Raghunath Ghara, focuses on the <strong>21-cm signal from the Dark Ages</strong> — investigating theoretical and observational implications for early-Universe structure formation, cosmic neutral hydrogen evolution, and baryon–dark matter interactions. I presented this work as a poster at DPS Day 2026, IISER Kolkata.</p>
+
+                <p>I recently completed a research internship at <strong>TIFR Mumbai</strong>, where I reduced and analysed observational data from the HFOSC spectrograph at the Hanle telescope for two M-dwarf stars, contributing to an ongoing programme on stellar flares and magnetic activity in active stars.</p>
+
+                <p>Previously, I interned at <strong>IIT Bhilai</strong>, where I studied the Milky Way's formation history using Gaia DR3 data. By analysing the kinematics, orbits, and metallicities of over 5.5 million stars, I explored the galaxy's chemical and dynamical evolution — an experience that deepened my understanding of galactic archaeology.</p>
+
+                <p>I also contributed to the development of <strong>SpiralMap</strong>, a Python package documenting major Milky Way spiral-arm models, in collaboration with INAF, Torino. The resulting paper has been submitted to the <em>Journal of Open Source Software</em> and is available as an <a href="https://www.arxiv.org/abs/2506.11383" target="_blank">arXiv preprint</a>.</p>
+
+                <p>Outside research, I actively engage in citizen science projects via Zooniverse, write space blogs for <i>Infinity Cosmos</i>, and serve as Chief Coordinator of Astronomy at ScienceOverse, where I organise webinars, discussions, and student-led initiatives. I am also Editor-in-Chief of <em>The Scientificial</em>, a student science outreach magazine.</p>
+
+                <p>Technically, I work primarily in Python (Astropy, NumPy, Matplotlib), ADQL, and LaTeX, and I enjoy building tools that help uncover cosmic phenomena.</p>
+            </article>
+
+            <!-- Work / Research -->
+            <article id="work">
+                <h2 class="major">Research</h2>
+                <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+
+                <h3>21-cm Signal from the Dark Ages</h3>
+                <p><em>IISER Kolkata · Sep 2024 – Present · Advisor: Mr. Raghunath Ghara</em></p>
+                <p>Working on the 21-cm signal from the cosmic Dark Ages, focusing on theoretical and observational implications for early-Universe structure formation, neutral hydrogen evolution, and baryon–dark matter interactions. Poster presented at DPS Day 2026, IISER Kolkata. <a href="#">View Poster</a></p>
+
+                <hr />
+
+                <h3>Stellar Flares in Active M-dwarf Stars</h3>
+                <p><em>TIFR Mumbai · Jun 2025 – Jul 2025 · Advisor: Dr. Priyanka Chaturvedi</em></p>
+                <p>Reduced and analysed observational data from the HFOSC spectrograph at the Hanle telescope for two M-dwarf stars. Contributed to an ongoing research programme studying magnetic activity and chromospheric emission in active star J16111534. <a href="#">View Report</a></p>
+
+                <hr />
+
+                <h3>SpiralMap — Milky Way Spiral Arm Models</h3>
+                <p><em>INAF, Torino, Italy · Oct 2024 – Jul 2025 · Advisor: Dr. Shourya Khanna</em></p>
+                <p>Contributed to the development of <em>SpiralMap</em>, a Python package integrating major Milky Way spiral-arm models — Reid (2019), Taylor &amp; Cordes (1992), Levine, Drimmel, Hou et al. (2009), and Poggio — using masers, radio, and electron-density data. The package is publicly available on <a href="https://github.com/Abhaypru" target="_blank">GitHub</a> with full <a href="https://spiralmap.readthedocs.io/en/latest/" target="_blank">documentation</a>.</p>
+
+                <hr />
+
+                <h3>Milky Way Formation History with Gaia DR3</h3>
+                <p><em>IIT Bhilai · May 2024 – Jul 2024 · Advisor: Dr. Mahavir Sharma</em></p>
+                <p>Analysed Gaia DR3 data for ~5.59 million stars to study the Milky Way's formation history. Focused on metal-poor stars, orbital dynamics, kinematics, and metallicity distributions to distinguish disc and halo populations and reconstruct the galaxy's merger history. <a href="https://drive.google.com/file/d/1rOPrKhIXnBZtR8hfu6tZvzHMBKl7ApiC/view?usp=sharing" target="_blank">View Report</a></p>
+
+                <hr />
+
+                <p>I also explore radio astronomy, the global 21-cm signal, spectroscopic data analysis, exoplanet interiors, and theoretical cosmology.</p>
+            </article>
+
+            <!-- Publications -->
+            <article id="publications">
+                <h2 class="major">Publications</h2>
+
+                <p>Prusty, A. K. &amp; Khanna, S. (2025). <strong>SpiralMap: A Python package featuring major Milky Way spiral-arm models.</strong> <em>Submitted to Journal of Open Source Software.</em></p>
+                <ul>
+                    <li><a href="https://www.arxiv.org/abs/2506.11383" target="_blank">arXiv:2506.11383</a></li>
+                    <li><a href="https://spiralmap.readthedocs.io/en/latest/" target="_blank">Documentation</a></li>
+                    <li><a href="https://github.com/Abhaypru" target="_blank">GitHub Repository</a></li>
+                </ul>
+
+                <h3>Poster Presentations</h3>
+                <p>Prusty, A. K. (2026). <strong>Modeling the 21-cm Signal for the Early Universe.</strong> <em>DPS Day 2026, IISER Kolkata.</em> <a href="#">View Poster</a></p>
+            </article>
+
+            <!-- Skills -->
+            <article id="skills">
+                <h2 class="major">Skills &amp; Courses</h2>
+
+                <h3>Computational Skills</h3>
+                <ul>
+                    <li><strong>Languages:</strong> Python, ADQL, LaTeX, HTML/CSS, C (basic)</li>
+                    <li><strong>Libraries:</strong> Astropy, NumPy, Matplotlib, Pandas</li>
+                    <li><strong>Tools:</strong> SAO DS9, Astrometrica, Git</li>
+                    <li><strong>Platforms:</strong> Linux, Windows, macOS</li>
+                    <li><strong>Data:</strong> Gaia DR3, HFOSC spectra, ASAS-SN light curves</li>
+                </ul>
+
+                <h3>Key Courses</h3>
+                <p>Advanced Quantum Mechanics, General Theory of Relativity and Cosmology, Introduction to Astrophysics, Space Astronomy Laboratory, Statistical Mechanics, Thermal Physics, Electrostatics and Magnetism, Mathematical Methods, Earth System and Processes, Computer Science.</p>
+
+                <h3>Outreach &amp; Leadership</h3>
+                <ul>
+                    <li>Teaching Assistant, PH1201: Electricity &amp; Magnetism, IISER Kolkata (2024–25)</li>
+                    <li>Chief Coordinator, Astronomy Dept., ScienceOverse — led a team of 7–8 members organising webinars, quizzes, and discussions</li>
+                    <li>Editor-in-Chief, <em>The Scientificial</em> — published the inaugural issue of a student science outreach magazine</li>
+                    <li>Citizen Scientist (Zooniverse) — ASAS-SN variable star light curves, Galaxy Zoo supernova detection</li>
+                    <li>Space Blogger, <em>Infinity Cosmos</em> — articles on Aditya-L1, auroras, Falcon 9, and space science</li>
+                    <li>Treasurer, IISER Kolkata Kabaddi Club (2023–24)</li>
+                </ul>
+
+                <h3>Achievements</h3>
+                <ul>
+                    <li>Poster Presentation, DPS Day 2026, IISER Kolkata</li>
+                    <li>Start-Up Meet, IIT Kharagpur (Dec 2023)</li>
+                    <li>Planetary Defender — NASA DART Mission, Zooniverse (Jul 2023)</li>
+                    <li>MTIAUA Workshop — citizen science, lunar exploration, galaxy formation with JWST</li>
+                    <li>National Means-Cum-Merit Scholarship (NMMS), Nov 2017</li>
+                </ul>
+            </article>
+
+            <!-- CV -->
+            <article id="CV">
+                <h2 class="major">Curriculum Vitae</h2>
+                <span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+                <p>You can download my most up-to-date CV here. Feel free to reach out with any questions or suggestions.</p>
+
+                <ul class="actions">
+                    <li><a href="Abhay_Kumar_Prusty_CV.pdf" class="button primary icon solid fa-download" target="_blank">Download CV</a></li>
+                </ul>
+
+                <h3>Education</h3>
+                <p><strong>BS-MS Dual Degree in Physics</strong> (Minor: Computer Science)<br />
+                Indian Institute of Science Education and Research (IISER) Kolkata, 2022 – Present<br />
+                8th Semester, Department of Physics</p>
+
+                <p><strong>Higher Secondary (12th Grade)</strong><br />
+                Jupiter Higher Secondary School, Bhubaneswar, Odisha — 90.5% (2020–21)</p>
+
+                <p><strong>Secondary School (10th Grade)</strong><br />
+                Bhagabati Nodal High School, Belarpur, Odisha — 84.5% (2018–19)</p>
+            </article>
+
+            <!-- Resources -->
+            <article id="resources">
+                <h2 class="major">Resources</h2>
+                <p>Tools, reports, and notebooks related to astronomy and coding:</p>
+                <ul>
+                    <li><a href="https://spiralmap.readthedocs.io/en/latest/" target="_blank">SpiralMap Documentation</a> — Python package for Milky Way spiral-arm models</li>
+                    <li><a href="https://www.arxiv.org/abs/2506.11383" target="_blank">SpiralMap arXiv Preprint</a> — arXiv:2506.11383</li>
+                    <li><a href="https://drive.google.com/file/d/1rOPrKhIXnBZtR8hfu6tZvzHMBKl7ApiC/view?usp=sharing" target="_blank">Reconstruction of the Formation History of the Milky Way</a> — IIT Bhilai Internship Report</li>
+                    <li><a href="#">TIFR Internship Report</a> — Stellar flares in M-dwarf stars (coming soon)</li>
+                    <li><a href="#">Python Notebook: Exoplanet Transit Modeling</a> (coming soon)</li>
+                    <li><a href="#">Beginner's Guide to IRAF</a> (coming soon)</li>
+                </ul>
+            </article>
+
+            <!-- Contact -->
+            <article id="contact">
+                <h2 class="major">Contact</h2>
+                <form method="post" action="#">
+                    <div class="fields">
+                        <div class="field half">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="field half">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send Message" class="primary" /></li>
+                        <li><input type="reset" value="Reset" /></li>
+                    </ul>
+                </form>
+                <ul class="icons">
+                    <li><a href="https://x.com/Imabhay045" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/Abhaypru" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                    <li><a href="mailto:akp22ms087@iiserkol.ac.in" class="icon solid fa-envelope" target="_blank"><span class="label">Email</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/abhay-kumar-prusty-a27638248/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                </ul>
+            </article>
+
         </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">
+                &copy; Abhay Kumar Prusty. Design: <a href="https://html5up.net">HTML5 UP</a>.
+            </p>
+        </footer>
     </div>
 
-    <section class="about" id="about">
-        <h2>About</h2>
-        <p>
-            I'm a fourth-year undergraduate at IISER Kolkata pursuing a BS-MS dual degree in
-            Physics with a minor in Computer Science.
-        </p>
-        <p>
-            My current project, supervised by Mr. Raghunath Ghara, focuses on the
-            <strong>21-cm signal from the Dark Ages</strong> — tracing the evolution of
-            neutral hydrogen and baryon–dark matter interactions in the early Universe.
-            I presented this work at DPS Day 2026, IISER Kolkata.
-        </p>
-        <p>
-            Previously I interned at <strong>TIFR Mumbai</strong>, reducing HFOSC spectroscopic
-            data for M-dwarf stellar flare studies, and at <strong>IIT Bhilai</strong>, where
-            I analysed Gaia DR3 data for ~5.59 million stars to probe the Milky Way's
-            formation history.
-        </p>
-        <p>
-            Outside research I write space blogs for <em>Infinity Cosmos</em>, coordinate
-            astronomy outreach at ScienceOverse, and contribute to citizen science on Zooniverse.
-        </p>
-    </section>
+    <!-- BG -->
+    <div id="bg"></div>
 
-    <section id="research">
-        <h2>Research</h2>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-        <div class="research-item">
-            <div class="r-date">Jun – Jul 2025</div>
-            <div class="r-body">
-                <h3>Stellar Flares in Active M-dwarf Stars</h3>
-                <div class="r-where">TIFR Mumbai &nbsp;·&nbsp; Advisor: Dr. Priyanka Chaturvedi</div>
-                <p>Reduced and analysed HFOSC spectrograph data from the Hanle telescope for two
-                M-dwarf stars. Contributed to an ongoing programme on magnetic activity and
-                chromospheric emission in active star J16111534.</p>
-                <a href="#">Report →</a>
-            </div>
-        </div>
-
-        <div class="research-item">
-            <div class="r-date">Oct 2024 – Jul 2025</div>
-            <div class="r-body">
-                <h3>SpiralMap — Milky Way Spiral Arm Models</h3>
-                <div class="r-where">INAF, Torino, Italy &nbsp;·&nbsp; Advisor: Dr. Shourya Khanna</div>
-                <p>Developed <em>SpiralMap</em>, a Python package integrating major Milky Way
-                spiral-arm models (Reid 2019, Taylor &amp; Cordes 1992, Hou et al. 2009, Poggio)
-                using masers, radio, and electron-density data.</p>
-                <a href="https://spiralmap.readthedocs.io/en/latest/" target="_blank">Documentation →</a>
-            </div>
-        </div>
-
-        <div class="research-item">
-            <div class="r-date">Sep 2024 – present</div>
-            <div class="r-body">
-                <h3>21-cm Signal from the Dark Ages</h3>
-                <div class="r-where">IISER Kolkata &nbsp;·&nbsp; Advisor: Mr. Raghunath Ghara</div>
-                <p>Investigating the 21-cm signal's theoretical and observational implications —
-                early-Universe structure formation, cosmic neutral hydrogen evolution, and
-                baryon–dark matter interactions.</p>
-                <a href="#">Poster →</a>
-            </div>
-        </div>
-
-        <div class="research-item">
-            <div class="r-date">May – Jul 2024</div>
-            <div class="r-body">
-                <h3>Milky Way Formation History with Gaia DR3</h3>
-                <div class="r-where">IIT Bhilai &nbsp;·&nbsp; Advisor: Dr. Mahavir Sharma</div>
-                <p>Analysed ~5.59 million stars from Gaia DR3, focusing on metal-poor stars,
-                orbital dynamics, and metallicity to distinguish disc and halo populations and
-                reconstruct the galaxy's merger history.</p>
-                <a href="https://drive.google.com/file/d/1rOPrKhIXnBZtR8hfu6tZvzHMBKl7ApiC/view?usp=sharing" target="_blank">Report →</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="publications">
-        <h2>Publications</h2>
-        <div class="pub">
-            <h3>SpiralMap: A Python package featuring major Milky Way spiral-arm models</h3>
-            <div class="pub-meta">Prusty, A. K. &amp; Khanna, S. &nbsp;—&nbsp; Submitted to <em>Journal of Open Source Software</em>, 2025</div>
-            <div class="pub-links">
-                <a href="https://www.arxiv.org/abs/2506.11383" target="_blank">arXiv:2506.11383</a>
-                <a href="https://spiralmap.readthedocs.io/en/latest/" target="_blank">Docs</a>
-                <a href="https://github.com/Abhaypru" target="_blank">GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Skills &amp; Tools</h2>
-        <div class="skills-row"><span class="s-label">Languages</span><span class="s-val">Python, ADQL, LaTeX, HTML/CSS, C (basic)</span></div>
-        <div class="skills-row"><span class="s-label">Libraries</span><span class="s-val">Astropy, NumPy, Matplotlib, Pandas</span></div>
-        <div class="skills-row"><span class="s-label">Tools</span><span class="s-val">SAO DS9, Astrometrica, Git, Linux</span></div>
-        <div class="skills-row"><span class="s-label">Data</span><span class="s-val">Gaia DR3, HFOSC spectra, ASAS-SN light curves</span></div>
-    </section>
-
-    <section id="misc">
-        <h2>Outreach &amp; Achievements</h2>
-        <ul class="misc-list">
-            <li><span class="m-year">2026</span><span>Poster — DPS Day, IISER Kolkata ("Modeling the 21-cm for the Early Universe")</span></li>
-            <li><span class="m-year">2024–25</span><span>Teaching Assistant, PH1201: Electricity &amp; Magnetism, IISER Kolkata</span></li>
-            <li><span class="m-year">2024–25</span><span>Editor-in-Chief, <em>The Scientificial</em> — science outreach magazine, inaugural issue</span></li>
-            <li><span class="m-year">2023–25</span><span>Chief Coordinator, Astronomy Dept., ScienceOverse — webinars, quizzes, discussions</span></li>
-            <li><span class="m-year">2023</span><span>Start-Up Meet, IIT Kharagpur</span></li>
-            <li><span class="m-year">2023</span><span>Planetary Defender — NASA DART Mission (Zooniverse)</span></li>
-            <li><span class="m-year">2017</span><span>National Means-Cum-Merit Scholarship (NMMS)</span></li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-links">
-            <a href="mailto:akp22ms087@iiserkol.ac.in"><span class="c-label">Institute</span>akp22ms087@iiserkol.ac.in</a>
-            <a href="mailto:abhayprusty45@gmail.com"><span class="c-label">Personal</span>abhayprusty45@gmail.com</a>
-            <a href="https://github.com/Abhaypru" target="_blank"><span class="c-label">GitHub</span>github.com/Abhaypru</a>
-            <a href="https://www.linkedin.com/in/abhay-kumar-prusty-a27638248/" target="_blank"><span class="c-label">LinkedIn</span>abhay-kumar-prusty</a>
-            <a href="https://x.com/Imabhay045" target="_blank"><span class="c-label">Twitter/X</span>@Imabhay045</a>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2026 Abhay Kumar Prusty &nbsp;·&nbsp; IISER Kolkata
-    </footer>
-
-</div>
 </body>
 </html>
